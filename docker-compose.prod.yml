@@ -1,0 +1,27 @@
+services:
+  app:
+    env_file:
+      - .env
+    ports:
+      - "8000:8000"
+    restart: always
+    build:
+      context: .
+      dockerfile: docker/php/prod/Dockerfile
+    networks:
+      - app_net
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+
+networks:
+  app_net:
+    driver: bridge
+
+# Comando para iniciar o ambiente de produção
+# docker compose -f docker-compose.prod.yml up -d
+
+

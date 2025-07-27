@@ -3,9 +3,9 @@
 // app/Http/Middleware/BearerAuthMiddleware.php
 namespace App\Http\Middleware;
 
+use Closure;
 use App\Presentation\Http\Response\ApiResponse;
 use App\Utils\HttpStatus;
-use Closure;
 use Illuminate\Http\Request;
 use Firebase\JWT\JWT;
 
@@ -13,7 +13,6 @@ class BearerAuthMiddleware
 {
     public function handle(Request $request, Closure $next)
     {
-
         $secret = env('JWT_SECRET');
         $algorithm = ['HS256'];
         $authHeader = $request->header('Authorization');

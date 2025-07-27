@@ -37,5 +37,7 @@ RUN apk update && apk add --no-cache \
 
 RUN npm install --save-dev chokidar
 
+RUN  php artisan key:generate
+
 EXPOSE 8000
 CMD ["php", "artisan", "octane:start", "--server=swoole", "--host=0.0.0.0", "--watch"]

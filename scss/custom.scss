@@ -1,0 +1,126 @@
+// custom-bootstrap-catppuccin.scss
+
+// 1) Ativa CSS vars e Dark Mode no Bootstrap
+$enable-css-custom-properties: true;
+$enable-dark-mode: true;
+
+// 2) Importa engine Sass do Bootstrap
+@import "../node_modules/bootstrap/scss/functions"; // mixins de funções (to-rgb, shade-color, etc.) :contentReference[oaicite:2]{index=2}
+@import "../node_modules/bootstrap/scss/variables"; // todas variáveis padrão
+@import "../node_modules/bootstrap/scss/mixins"; // incluindo color-mode()
+
+// 3) Define paletas Catppuccin
+$cat-latte: (
+    rosewater: #dc8a78,
+    flamingo: #dd7878,
+    pink: #ea76cb,
+    mauve: #8839ef,
+    red: #d20f39,
+    maroon: #e64553,
+    peach: #fe640b,
+    yellow: #df8e1d,
+    green: #40a02b,
+    teal: #179299,
+    blue: #1e66f5,
+    sky: #04a5e5,
+    lavender: #7287fd,
+    text: #4c4f69,
+    text2: #222,
+    subtext1: #5c5f77,
+    subtext0: #6c6f85,
+    overlay0: #9ca0b0,
+    overlay1: #8c8fa1,
+    overlay2: #7c7f93,
+    surface0: #acb0be,
+    surface1: #bcc0cc,
+    surface2: #ccd0da,
+    base: #eff1f5,
+    mantle: #e6e9ef,
+    crust: #dce0e8
+);
+
+$cat-mocha: (
+    rosewater: #f5e0dc,
+    flamingo: #f2cdcd,
+    pink: #f5c2e7,
+    mauve: #cba6f7,
+    red: #f38ba8,
+    maroon: #eba0ac,
+    peach: #fab387,
+    yellow: #f9e2af,
+    green: #a6e3a1,
+    teal: #94e2d5,
+    blue: #89b4fa,
+    sky: #89dceb,
+    lavender: #b4befe,
+    text: #cdd6f4,
+    subtext1: #bac2de,
+    subtext0: #a6adc8,
+    overlay0: #6c7086,
+    overlay1: #7f849c,
+    overlay2: #9399b2,
+    surface0: #585b70,
+    surface1: #45475a,
+    surface2: #313244,
+    base: #1e1e2e,
+    mantle: #181825,
+    crust: #11111b 
+);
+
+// 4) Sobrescreve variáveis Sass para o tema claro (Latte)
+// $primary: map-get($cat-latte, blue);
+// $secondary: map-get($cat-latte, mauve);
+// $success: map-get($cat-latte, green);
+// $info: map-get($cat-latte, sky);
+// $warning: map-get($cat-latte, yellow);
+// $danger: map-get($cat-latte, flamingo);
+// $light: map-get($cat-latte, surface1);
+// $dark: map-get($cat-latte, text);
+
+// $body-bg: map-get($cat-latte, crust);
+// $body-color: map-get($cat-latte, text2);
+// $link-color: map-get($cat-latte, blue);
+// $headings-color: map-get($cat-latte, text);
+
+$body-bg: #f2f2f2;
+
+// 5) Importa o Bootstrap com nossas customizações
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+// 6) Aplica variável CSS do tema Mocha quando data-bs-theme="dark"
+@include color-mode(dark) {
+    --bs-body-bg: #{map-get($cat-mocha, crust)};
+    // --bs-body-color: #{map-get($cat-mocha, text)};
+    // --bs-primary: #{map-get($cat-mocha, mauve)};
+    // --bs-secondary: #{map-get($cat-mocha, mauve)};
+    // --bs-success: #{map-get($cat-mocha, green)};
+    // --bs-info: #{map-get($cat-mocha, sky)};
+    // --bs-warning: #{map-get($cat-mocha, yellow)};
+    // --bs-danger: #{map-get($cat-mocha, red)};
+    // --bs-light: #{map-get($cat-mocha, surface1)};
+    // --bs-dark: #{map-get($cat-mocha, text)};
+    // --bs-link-color: #{map-get($cat-mocha, blue)};
+    // --bs-headings-color: #{map-get($cat-mocha, text)};
+}
+
+[data-bs-theme="dark"] nav {
+    background-color: #{map-get($cat-mocha, mantle)};
+    box-shadow: 0 0px 12px rgba(255, 255, 255, 0.2);
+    border-bottom: 0px solid transparent !important;
+}
+
+[data-bs-theme="dark"] .card {
+    background-color: #{map-get($cat-mocha, mantle)};
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    color: #{map-get($cat-mocha, text)};
+}
+
+[data-bs-theme="light"] nav {
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+[data-bs-theme="light"] .card {
+    background-color: #fff;
+    box-shadow: 0 2px 10px #00000033;
+}

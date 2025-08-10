@@ -12,8 +12,8 @@ class User extends Authenticatable
     use HasFactory, HasApiTokens, Notifiable;
 
     protected $fillable = [
-        'name',
         'uuid',
+        'name',
         'last_name',
         'email',
         'email_verified_at',
@@ -21,6 +21,9 @@ class User extends Authenticatable
         'provider',
         'provider_id',
         'provider_token',
+        'remember_token',
+        'created_at',
+        'updated_at'
     ];
 
     protected $hidden = [

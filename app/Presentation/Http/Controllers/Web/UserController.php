@@ -52,9 +52,10 @@ class UserController extends Controller
             $response->setStatusCode(HttpStatus::BAD_REQUEST);
             $response->setMessage($e->getMessage());
         } catch (Exception $e) {
+            Log::error("Falha ao atualizar usuário: " . $e->getMessage());
             $response->setSuccess(false);
             $response->setStatusCode(HttpStatus::INTERNAL_SERVER_ERROR);
-            $response->setMessage('Unexpected error');
+            $response->setMessage('Erro Inesperado.');
         }
 
         return response()->json($response->toArray(), $response->getStatusCode());
@@ -75,9 +76,10 @@ class UserController extends Controller
             $response->setStatusCode(HttpStatus::BAD_REQUEST);
             $response->setMessage($e->getMessage());
         } catch (Exception $e) {
+            Log::error("Falha ao atualizar senha: " . $e->getMessage());
             $response->setSuccess(false);
             $response->setStatusCode(HttpStatus::INTERNAL_SERVER_ERROR);
-            $response->setMessage('Unexpected error');
+            $response->setMessage('Erro Inesperado.');
         }
 
         return response()->json($response->toArray(), $response->getStatusCode());
@@ -111,13 +113,10 @@ class UserController extends Controller
             $response->setStatusCode(HttpStatus::BAD_REQUEST);
             $response->setMessage($e->getMessage());
         } catch (Exception $e) {
-            Log::error('Unexpected error during user registration: ' . $e->getMessage(), [
-                'exception' => $e,
-                'data' => $request->all()
-            ]);
+            Log::error('Falha ao registrar usuário: ' . $e->getMessage());
             $response->setSuccess(false);
             $response->setStatusCode(HttpStatus::INTERNAL_SERVER_ERROR);
-            $response->setMessage('Unexpected error');
+            $response->setMessage('Erro Inesperado.');
         }
 
         return response()->json($response->toArray(), $response->getStatusCode());
@@ -148,9 +147,10 @@ class UserController extends Controller
             $response->setStatusCode(HttpStatus::BAD_REQUEST);
             $response->setMessage($e->getMessage());
         } catch (Exception $e) {
+            Log::error("Falha ao recuperar senha do usuário: " . $e->getMessage());
             $response->setSuccess(false);
             $response->setStatusCode(HttpStatus::INTERNAL_SERVER_ERROR);
-            $response->setMessage('Unexpected error');
+            $response->setMessage('Erro Inesperado.');
         }
 
         return response()->json($response->toArray(), $response->getStatusCode());
@@ -179,9 +179,10 @@ class UserController extends Controller
             $response->setStatusCode(HttpStatus::BAD_REQUEST);
             $response->setMessage($e->getMessage());
         } catch (Exception $e) {
+            Log::error("Falha ao recuperar senha: " . $e->getMessage());
             $response->setSuccess(false);
             $response->setStatusCode(HttpStatus::INTERNAL_SERVER_ERROR);
-            $response->setMessage('Unexpected error');
+            $response->setMessage('Erro Inesperado.');
         }
 
         return response()->json($response->toArray(), $response->getStatusCode());

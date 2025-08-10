@@ -3,13 +3,13 @@
 namespace App\Application\Services\User;
 
 use App\Domain\Entities\User;
+use App\Domain\Entities\Uuid;
 use App\Domain\Repositories\PasswordResetTokenRepositoryInterface;
 use App\Domain\Repositories\UserRepositoryInterface;
 use App\Exceptions\BusinessRuleException;
 use App\Infrastructure\Persistence\PasswordResetTokenRepository;
 use App\Infrastructure\Persistence\UserRepository;
 use App\Mail\PasswordRecoveryMail;
-use App\Utils\Uuid;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;

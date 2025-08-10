@@ -1,9 +1,29 @@
 <?php
 
-namespace App\Utils;
+namespace App\Domain\Entities;
 
 class Uuid
 {
+    protected string $uuid;
+
+    public function __construct(string $uuid)
+    {
+        if (!self::isValidUuid($uuid)) {
+            throw new \InvalidArgumentException('UUID é inválido');
+        }
+
+        $this->uuid = $uuid;
+    }
+
+    /**
+     * Converts UUID to string
+     * @return string
+     */
+    public function toString(): string
+    {
+        return $this->uuid;
+    }
+    
     /**
      * Generates a UUID version 1
      *

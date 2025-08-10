@@ -62,9 +62,10 @@ class AuthController extends Controller
             $response->setStatusCode(HttpStatus::BAD_REQUEST);
             $response->setMessage($e->getMessage());
         } catch (Exception $e) {
+            Log::error("Falha ao autenticar: " . $e->getMessage());
             $response->setSuccess(false);
             $response->setStatusCode(HttpStatus::INTERNAL_SERVER_ERROR);
-            $response->setMessage('Unexpected error');
+            $response->setMessage('Erro Inesperado.');
         }
 
         return response()->json($response->toArray(), $response->getStatusCode());
